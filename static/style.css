@@ -1,0 +1,158 @@
+/* 🌌 Black Solid Background */
+body {
+    background: url("background.jpg") no-repeat center center fixed;
+    background-size: cover; /* Ensures full coverage */
+    width: 100vw;
+    height: 100%;
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.top-section {
+    margin-bottom: 30px;
+}
+
+.bottom-section {
+    width: 100%;
+    max-width: 700px;
+}
+
+
+/* 📦 Main Container */
+.container {
+    max-width: 600px;
+    background: #333; /* Solid dark gray */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    text-align: center;
+}
+
+/* 🎭 Hacker Image */
+#hacking-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Hide hacker image after checking */
+.hidden {
+    display: none;
+}
+
+h1 {
+    color: #ffffff;
+    font-size: 24px;
+}
+
+/* 🔍 Input Section */
+.input-section {
+    width: 100%;
+    background: #444; /* Dark gray */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* 🔍 Input Field */
+input {
+    width: 80%;
+    padding: 12px;
+    margin-top: 10px;
+    border: 2px solid #666;
+    border-radius: 5px;
+    background: #222; /* Darker gray */
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* 🚀 Check Button */
+button {
+    background-color: #0056b3; /* Solid Blue */
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 80%;
+    max-width: 300px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #004080;
+}
+
+/* ✅ Safe Result Section */
+.result-section {
+    width: 100%;
+    background: #2c7a2c; /* Solid Green */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    color: white;
+}
+
+/* ✅ Safe Indicator */
+.big-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e7d1e;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 25px;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+}
+
+/* ✅ Proceed Message */
+.proceed-msg {
+    font-size: 16px;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+/* 🔻 Phishing Alert Box */
+.phishing-alert {
+    background-color: #b30000;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* 🔻 List Styling */
+.loss-list, .safety-list {
+    text-align: left;
+    margin-top: 15px;
+    padding: 0 20px;
+    color: white;
+}
+
+.loss-list h3 {
+    color: #b30000;
+    text-align: center;
+}
+
+.safety-list h3 {
+    color: #1e7d1e;
+    text-align: center;
+}
