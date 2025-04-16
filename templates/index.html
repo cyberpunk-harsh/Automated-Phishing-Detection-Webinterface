@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Automated Phishing Detection</h1>
+
+        <!-- Hacker Image -->
+        <div id="hacking-image">
+            <img src="{{ url_for('static', filename='hacker.jpg') }}" alt="Hacker Image" id="hacker-img">
+        </div>
+
+        <!-- Input Box -->
+        <div class="input-box">
+            <form id="phishing-form" action="/predict" method="post">
+                <input type="text" name="url" id="url-input" placeholder="Enter a URL to check..." required value="{{ url_entered }}">
+                <button type="submit">Check</button>
+            </form>
+        </div>
+
+        <!-- Results Box -->
+        {% if prediction_text %}
+            <script>
+                document.getElementById("hacking-image").classList.add("hidden");
+            </script>
+
+            <!-- Result Box -->
+            {% if 'Phishing' in prediction_text %}
+                <div class="result-box phishing-alert">
+                    <h2>🚨 Phishing Link Detected! 🚨</h2>
+                    <p>⚠️ Do not proceed further! This link is dangerous.</p>
+                    <audio id="siren-sound" autoplay>
+                        <source src="{{ url_for('static', filename='siren.mp3') }}" type="audio/mpeg">
+                    </audio>
+                    
+                    <!-- Explanations -->
+                    <ul class="reason-list" style="text-align: left; margin-top: 20px;">
+                        <h3 style="color: white; font-size: 20px; margin-bottom: 10px;">
+                            🔍 Why This Link Was Classified:
+                        </h3>
+                        {% for explanation in feature_explanations %}
+                            <li>{{ explanation }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <!-- Losses -->
+                    <ul class="loss-list" style="text-align: left; margin-top: 20px;">
+                        <h3 style="color: white; background-color: #b30000; padding: 10px; border-radius: 8px; font-weight: bold;">
+                            🔻 10 Losses You May Suffer After Proceeding:
+                        </h3>
+                        {% for loss in phishing_losses %}
+                            <li>{{ loss }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% else %}
+                <div class="safe-box">
+                    <div class="big-circle">
+                        <h2>✅ Legitimate Link</h2>
+                    </div>
+                    <p class="proceed-msg">✔ You may proceed further with this link.</p>
+                    <audio id="tick-sound" autoplay>
+                        <source src="{{ url_for('static', filename='tick.mp3') }}" type="audio/mpeg">
+                    </audio>
+
+                    <!-- Explanations -->
+                    <ul class="reason-list" style="text-align: left; margin-top: 20px;">
+                        <h3 style="color: white; font-size: 20px; margin-bottom: 10px;">
+                            🔍 Why This Link Was Classified:
+                        </h3>
+                        {% for explanation in feature_explanations %}
+                            <li>{{ explanation }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <!-- Safety Tips -->
+                    <ul class="safety-list">
+                        <h3>🛡️ 10 Techniques to Stay Safe from Phishing:</h3>
+                        {% for tip in safety_tips %}
+                            <li>{{ tip }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <!-- Hacker image slideshow -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var images = [
+                "{{ url_for('static', filename='hacker.jpg') }}",
+                "{{ url_for('static', filename='hacker1.jpg') }}",
+                "{{ url_for('static', filename='hacker2.jpg') }}",
+                "{{ url_for('static', filename='hacker3.jpg') }}",
+            ];
+            var index = 0;
+            setInterval(function () {
+                index = (index + 1) % images.length;
+                document.getElementById("hacker-img").src = images[index];
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
